@@ -35,6 +35,9 @@ export const authOptions: NextAuthOptions = {
   providers: [
     spotifyProvider
   ],
+  session: {
+    maxAge: 3600, // 60s/m * 1 * 60m/hr == 3600s/hr
+  },
   callbacks: {
     async jwt({ token, account }: { token: JWT; account: Account | null }) {
       /*
@@ -55,7 +58,6 @@ export const authOptions: NextAuthOptions = {
         scope: account?.scope,
         id: account?.providerAccountId,
       };
-
 
       return updatedToken;
     },
