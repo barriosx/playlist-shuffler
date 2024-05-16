@@ -30,7 +30,7 @@ function UserPlaylists({ sdk }: { sdk: SpotifyApi }) {
   }, [session, sdk])
 
   const playlists = userPlaylists.map((playlist, index) => (
-    <div className="flex mt-2 items-center rounded-lg bg-white p-2" key={index}>
+    <div className="flex mt-2 items-center rounded-lg bg-white dark:bg-slate-700 p-2" key={index}>
       <img src={playlist.images[0].url} className="w-10 h-10 " alt="Playlist Image" />
       <div className="flex-col ml-4">
         <p className="font-bold text-sm">{playlist.name}</p>
