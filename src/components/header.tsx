@@ -2,6 +2,7 @@
 
 import { Session } from "next-auth";
 import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Header() {
   const session = useSession();
@@ -18,7 +19,7 @@ export default function Header() {
 function FtuxHeaderItem({session}: { session: {data: Session | undefined | null; status: "loading" | "authenticated" | "unauthenticated"}} ) {
   if ((!session.data) || session.status !== "authenticated") {
     return (
-      <button type="button" className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+      <button type="button" className="rounded-md bg-green-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600
       "
       onClick={() => signIn("spotify")}
       >Sign in with Spotify</button>
@@ -26,7 +27,7 @@ function FtuxHeaderItem({session}: { session: {data: Session | undefined | null;
   } else {
     return (
       <div className="flex overflow-hidden sm:text-2xl items-center">
-        <img className="inline-block h-8 w-8 rounded-full ring-2 ring-white" src={(session.data.user?.image ?? '') as string} alt=""></img>
+        <Image className="inline-block h-7 w-7 rounded-full" src={(session.data.user?.image ?? '') as string} alt="" />
         <span className="ml-1 text-sm font-bold">{session.data.user?.name}</span>
       </div>
     );
