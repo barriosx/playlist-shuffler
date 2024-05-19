@@ -27,7 +27,9 @@ function FtuxHeaderItem({session}: { session: {data: Session | undefined | null;
   } else {
     return (
       <div className="flex overflow-hidden sm:text-2xl items-center">
-        <Image className="inline-block h-7 w-7 rounded-full" src={(session.data.user?.image ?? '') as string} alt="" />
+        <div className="inline-block relative h-7 w-7">
+          <Image className="rounded-full" src={(session.data.user?.image ?? '') as string} fill={true} alt="Profile Picture" />
+        </div>
         <span className="ml-1 text-sm font-bold">{session.data.user?.name}</span>
       </div>
     );
